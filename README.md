@@ -7,10 +7,15 @@
 The dataset can be downloaded via:
 1. Kaggle (https://www.kaggle.com/datasets/arifnuriman/indonesian-public-figure-faces)
 
+# Development Step
+![pipeline](https://github.com/verifikasiin/siamese-face-recognition-model/assets/65358140/d7a74c70-76bc-4424-8648-11aae2298d29)
+
 # Steps for Training
 1. Import data into the Code Platform
 2. Resize the image into the desired size, we resize it to 224x224
 3. Define the pre-trained model as the base model, we use a pre-trained model of VGG Face (Weights: https://www.kaggle.com/datasets/acharyarupak391/vggfaceweights)
+![encoder model](https://github.com/verifikasiin/siamese-face-recognition-model/assets/65358140/7282f365-703d-4b51-bb18-c8a2a9fbf6bd)
+  
 4. Add flatten, Lambda layers as the top layer, Lambda used L2 Normalization method
 5. Construct Siamese model with triplet loss to train encoder model
 6. Define loss function and optimizer.
@@ -25,6 +30,8 @@ tflite_quant_model = converter.convert()
 For the complete code checkout the notebook on https://github.com/verifikasiin/siamese-face-recognition-model/blob/main/2%20Preprocess%20%26%20Train%20Model.ipynb
 
 # Steps for Predicting
+![inference](https://github.com/verifikasiin/siamese-face-recognition-model/assets/65358140/b6c14b5e-f4d4-4e1f-ade0-5d3658f04abf)
+
 1. Load the tflite model using read byte and allocate tensor for the interpreter
   ```
    with open(model_path, 'rb') as f:
@@ -38,3 +45,4 @@ For the complete code checkout the notebook on https://github.com/verifikasiin/s
 5. Measure the distance between encoded value of two image
 
 For the complete code on inference, checkout the python script https://github.com/verifikasiin/siamese-face-recognition-model/blob/main/5%20face_verification_lite.py 
+
